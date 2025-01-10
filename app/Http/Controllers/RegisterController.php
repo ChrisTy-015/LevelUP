@@ -16,7 +16,7 @@ class RegisterController extends Controller
     // Traite l'inscription
     public function register(Request $request)
     {
-        {
+        
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
@@ -28,7 +28,7 @@ class RegisterController extends Controller
         
             $profile_picture = null;
             if ($request->hasFile('profile_picture')) {
-                $profile_picture = $request->file('profile_picture')->store('profile_pictures', 'public');
+                $profile_picture = $request->file('profile_picture')->store('profile_picture', 'public');
             }
         
             $user = User::create([
@@ -44,5 +44,5 @@ class RegisterController extends Controller
         
             return redirect()->route('home');
         }
-    }
+    
 }
